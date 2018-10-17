@@ -1,0 +1,20 @@
+---
+- name: Get facts
+  hosts: vMX
+  connection: local
+  gather_facts: no
+  
+  roles:
+  - Juniper.junos
+  
+
+  tasks:
+  - name: Get junos facts
+    junos_get_facts:
+      host: "192.168.59.11"
+      user: "ansible"
+      passwd: "ansible123"
+    register: junos
+  - name: Print facts
+    debug:
+    var: junos

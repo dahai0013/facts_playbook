@@ -1,0 +1,21 @@
+---
+- name: Get facts Play
+  hosts: vMX
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    ansible_python_interpreter: "/usr/bin/python"
+  tasks:
+    - name: Checking NETCONF connectivity Task
+      wait_for: host={{ inventory_hostname }} port=830 timeout=5
+    - name: Get junos facts Task
+      junos_get_facts:
+        host: "192.168.99.111"
+        user: "ansible"
+        passwd: "ansible123"
+      register: junos
+    - name: Print facts
+      debug:
+        var: junos

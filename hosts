@@ -1,0 +1,6 @@
+[vMX]
+#192.168.99.111
+192.168.99.111 ansible_connection=local ansible_ssh_user=ansible ansible_ssh_pass=ansible123
+
+[vMX:vars]
+ansible_python_interpreter=/usr/bin/python3
